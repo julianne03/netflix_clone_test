@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   carousel_slider:
+  flutter_linkify:
+  url_launcher:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,7 +51,7 @@ flutter:
   assets:
     - images/bbongflix_logo.png
     - images/test_movie_1.png
-    - images/loveof.jpg
+    - images/profile.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
