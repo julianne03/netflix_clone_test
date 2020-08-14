@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_test/model/model_movie.dart';
 
-class CircleSlider extends StatelessWidget {
+class BoxSlider1 extends StatelessWidget {
   final List<Movie> movies;
-  CircleSlider({this.movies});
+  BoxSlider1({this.movies});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,16 +12,16 @@ class CircleSlider extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-              'Netflix 인기 콘텐츠',
+            'Netflix 인기 콘텐츠',
             style: TextStyle(
-              fontSize: 20
+              fontSize: 20,
             ),
           ),
           Container(
-            height: 150,
+            height: 250,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: makeCircleImage(movies),
+              children: makeBoxImages(movies),
             ),
           )
         ],
@@ -30,7 +30,8 @@ class CircleSlider extends StatelessWidget {
   }
 }
 
-List<Widget> makeCircleImage(List<Movie> movies) {
+
+List<Widget> makeBoxImages(List<Movie> movies) {
   List<Widget> results = [];
   for(var i = 0; i<movies.length; i++) {
     results.add(
@@ -40,15 +41,11 @@ List<Widget> makeCircleImage(List<Movie> movies) {
           padding: EdgeInsets.only(right: 10),
           child : Align(
             alignment: Alignment.centerLeft,
-            child: CircleAvatar(
-              backgroundImage: AssetImage('images/' +movies[i].poster),
-              radius: 40,
-            ),
+            child : Image.asset('images/' +movies[i].poster),
           ),
         ),
-      )
+      ),
     );
   }
   return results;
 }
-
