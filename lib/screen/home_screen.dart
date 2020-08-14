@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_test/model/model_movie.dart';
+import 'package:netflix_clone_test/widget/carousel_slider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,10 +11,28 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Movie> movies = [
     Movie.fromMap({
       'title' : '사랑의 불시착',
-      'keyword' : '사랑/로맨스/판타지',
+      'keyword' : '사랑/ 로맨스/ 판타지',
       'poster' : 'test_movie_1.png',
       'like' : false
-    })
+    }),
+    Movie.fromMap({
+      'title' : '사랑의 불시착',
+      'keyword' : '사랑/ 로맨스/ 판타지',
+      'poster' : 'test_movie_1.png',
+      'like' : false
+    }),
+    Movie.fromMap({
+      'title' : '사랑의 불시착',
+      'keyword' : '사랑/ 로맨스/ 판타지',
+      'poster' : 'test_movie_1.png',
+      'like' : false
+    }),
+    Movie.fromMap({
+      'title' : '사랑의 불시착',
+      'keyword' : '사랑/ 로맨스/ 판타지',
+      'poster' : 'test_movie_1.png',
+      'like' : false
+    }),
   ];
   @override
   void initState() {
@@ -22,11 +41,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return TapBar();
+    return ListView(
+      children: <Widget>[
+        Stack(
+          children: <Widget>[
+            CarouselImage(movies : movies),
+            TopBar(),
+          ],
+        )
+      ],
+    );
   }
 }
 
-class TapBar extends StatelessWidget {
+class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
