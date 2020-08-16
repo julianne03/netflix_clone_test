@@ -29,7 +29,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image : AssetImage('images/'+widget.moive.poster),
+                          image : NetworkImage(widget.moive.poster),
                           fit: BoxFit.cover,
                       ),
                     ),
@@ -44,8 +44,8 @@ class _DetailScreenState extends State<DetailScreen> {
                               children: <Widget>[
                                 Container(
                                   padding: EdgeInsets.fromLTRB(0, 45, 0, 10),
-                                  child: Image.asset(
-                                    'images/' + widget.moive.poster
+                                  child: Image.network(
+                                    widget.moive.poster
                                   ),
                                   height: 400,
                                 ),
@@ -100,9 +100,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                   padding: EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    '뜻밖의 돌풍은 행운일까, 불운일까. 패러글라이딩 사고로 북한에'
-                                        '불시착한 재벌 딸, 그곳에서 깐깐한 북한군 장교를 만난다.'
-                                        '이 와중에 피어오르는 낯선 감정은 뭐지?',
+                                    widget.moive.story,
                                     style: TextStyle(
                                       color: Colors.white, fontSize: 18
                                     ),
@@ -140,7 +138,13 @@ class _DetailScreenState extends State<DetailScreen> {
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            like = !like;
+                            widget.moive.reference.updateData(
+                                {'like': like});
+                          });
+                        },
                         child: Column(
                           children: <Widget>[
                             like ? Icon(Icons.check, size: 40) : Icon(Icons.add, size: 40),
